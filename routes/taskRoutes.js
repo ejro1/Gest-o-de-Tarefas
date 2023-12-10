@@ -1,13 +1,21 @@
-// Importar el enrutador de Express y el controlador de tareas
+// Importar o router do Express e o controlador de tarefas
 const taskRoutes = require('express').Router();
 const controller = require('../controllers/taskController');
 
-// Operaciones CRUD para estudiantes
-taskRoutes.get('/', controller.getAll); // Leer todos los estudiantes
-taskRoutes.get('/:number', controller.getById); // Leer uno por su ID (número de estudiante)
-taskRoutes.post('/create', controller.create); // Crear un nuevo estudiante
-taskRoutes.put('/update', controller.update); // Actualizar estudiante
-taskRoutes.delete('/delete/:number', controller.delete); // Eliminar estudiante
+// Operações CRUD para tarefas
+taskRoutes.get('/', controller.getAll); // Ler todas as tarefas
+taskRoutes.get('/:id', controller.getById); // Ler uma por ID (número de tarefa)
+taskRoutes.get('/:category',controller.getByCategory);
+taskRoutes.post('/create', controller.create); // Criar uma nova tarefa
+taskRoutes.put('/update/:id', controller.update); // Atualizar tarefa
+taskRoutes.delete('/delete/:id', controller.delete); // Eliminar tarefa
+taskRoutes.post('/share', controller.shareTask); // Partilhar tarefa
+taskRoutes.put('/favorite/:id', controller.markAsFavorite);// Marcar uma tarefa como favorita
+taskRoutes.put('/categorize/:id', controller.categorizeTask);// Categorizar uma tarefa
+taskRoutes.put('/priority/:id', controller.prioritizeTask);
 
-// Exportar el enrutador de estudiantes
+
+// Exportar o router de tarefas
 module.exports = taskRoutes;
+
+
