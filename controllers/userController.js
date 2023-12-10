@@ -3,6 +3,7 @@ const authenticateUtil = require('../utils/authenticate.js');
 const { PrismaClient } = require('../prisma/generated/client/index.js');
 const prisma = new PrismaClient();
 
+// Entrar com um Usuario
 exports.signin = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -30,12 +31,11 @@ exports.signin = async (req, res) => {
     }
 }
 
-
+// Registar um Usuario
 exports.signup = async (req, res) => {
     try {
         const { name, email, password, isAdmin } = req.body;
 
-        // Crear el usuario en la base de datos
         await prisma.users.create({
             data: {
                 email: email,
@@ -45,7 +45,6 @@ exports.signup = async (req, res) => {
             },
         });
 
-        // Autenticar al usuario recién creado y devolver la respuesta de inicio de sesión
         const user = await prisma.users.findUnique({
             where: {
                 email: email,
@@ -60,27 +59,28 @@ exports.signup = async (req, res) => {
             });
             res.status(200).json({ name: user.name, token: accessToken });
         } else {
-            // Manejar el caso en que el usuario no se encuentra después de la creación
-            res.status(401).json({ msg: 'Error al autenticar al usuario recién creado.' });
+    
+            res.status(401).json({ msg: 'Erro na autenticação do usuário recém-criado.' });
         }
     } catch (error) {
         res.status(401).json({ msg: error.message });
     }
 }
 
+// Obter todos os usuarios
 exports.getAllUsers = async (req, res) => {
     try {
-        // Obtener todos los usuarios de la base de datos
+    
         const users = await prisma.users.findMany();
 
         res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({ msg: 'Error al obtener usuarios', error: error.message });
+        res.status(500).json({ msg: 'Erro ao obter usuarios', error: error.message });
     }
 }
-// Actualizar perfil de usuario (sin autenticación)
+// Actualizar perfil do usuario 
 exports.updateProfile = async (req, res) => {
-    const { id } = req.params; // Asumiendo que el ID del usuario se pasa como parámetro en la URL
+    const { id } = req.params; 
     const { name, email, password, isAdmin } = req.body;
 
     try {
@@ -101,10 +101,10 @@ exports.updateProfile = async (req, res) => {
         return res.status(200).json(userWithoutPassword);
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Error al actualizar el perfil' });
+        return res.status(500).json({ error: 'Erro ao actualizar o perfil' });
     }
 };
-// Eliminar un usuario por su id (sin autenticación)
+// Apagar um usuario 
 exports.deleteUser = async (req, res) => {
     const id = req.params.id;
 
@@ -115,9 +115,9 @@ exports.deleteUser = async (req, res) => {
             },
         });
 
-        return res.status(200).send('Usuario eliminado correctamente');
+        return res.status(200).send('Usuario eliminado com sucesso');
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Error al eliminar el usuario' });
+        return res.status(500).json({ error: 'Erro ao eliminar o usuario' });
     }
 };

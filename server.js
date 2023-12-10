@@ -1,4 +1,4 @@
-require('dotenv').config();//console.log('Variables de entorno cargadas:', process.env);
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');

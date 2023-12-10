@@ -8,7 +8,7 @@ exports.getAll = async (req, res) => {
     return res.send(tareas);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Error al obtener las tareas' });
+    return res.status(500).json({ error: 'Erro ao obter as tarefas' });
   }
 };
 
@@ -16,7 +16,7 @@ exports.getAll = async (req, res) => {
 exports.getById = async (req, res) => {
   const id = Number(req.params.id);
   if (isNaN(id)) {
-    return res.status(400).json({ error: 'ID de tarea no válido' });
+    return res.status(400).json({ error: 'ID de tarefa não válido' });
   }
    try {
     const tarea = await prisma.task.findUnique({
@@ -26,22 +26,22 @@ exports.getById = async (req, res) => {
     });
 
     if (!tarea) {
-      return res.status(404).json({ error: 'Tarea no encontrada' });
+      return res.status(404).json({ error: 'Tarefa não encontrada' });
     }
 
     return res.send(tarea);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Error al obtener la tarea por ID' });
+    return res.status(500).json({ error: 'Erro ao obter a tarefa por ID' });
   }
 };
 
-// Obtener tareas por categoría
+// Obter tarefas por categoria
 exports.getByCategory = async (req, res) => {
   const category = req.query.category;
 
   if (!category) {
-    return res.status(400).json({ error: 'Parámetro de categoría no proporcionado' });
+    return res.status(400).json({ error: 'Parâmetro de categoria não fornecido' });
   }
 
   try {
@@ -49,7 +49,7 @@ exports.getByCategory = async (req, res) => {
       where: {
         category: {
           equals: category,
-          mode: 'insensitive', // Hace la búsqueda insensible a mayúsculas y minúsculas
+          mode: 'insensitive', 
         },
       },
     });
@@ -57,7 +57,7 @@ exports.getByCategory = async (req, res) => {
     return res.send(tareas);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Error al obtener las tareas por categoría' });
+    return res.status(500).json({ error: 'Erro ao obter as tarefas por categoria' });
   }
 };
 
@@ -82,7 +82,7 @@ exports.create = async (req, res) => {
     return res.status(201).send(nuevaTarea);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Error al crear una nueva tarea' });
+    return res.status(500).json({ error: 'Erro ao criar uma tarefa' });
   }
 };
 
@@ -108,7 +108,7 @@ exports.update = async (req, res) => {
     return res.send(tareaActualizada);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Error al actualizar la tarea' });
+    return res.status(500).json({ error: 'Erro ao atualizar a tarefa' });
   }
 };
 
@@ -126,21 +126,12 @@ exports.delete = async (req, res) => {
     return res.status(200).send('ok');
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Error al eliminar la tarea' });
+    return res.status(500).json({ error: 'Erro ao apagar a tarefa' });
   }
 };
 
 // Partilhar uma tarefa com outro utilizador
 exports.shareTask = async (req, res) => {
-  // Comentamos o eliminamos la verificación de autenticación
-  // const userId = req.user ? req.user.id : null;
-
-  // Eliminamos la verificación de autenticación
-  // if (!userId) {
-  //   res.status(401).json({ error: 'Usuario no autenticado.' });
-  //   return;
-  // }
-
   const { taskId, userIdToShareWith } = req.body;
 
   try {
@@ -151,16 +142,8 @@ exports.shareTask = async (req, res) => {
     });
 
     if (!task) {
-      return res.status(404).json({ error: 'Tarea no encontrada' });
+      return res.status(404).json({ error: 'Tarefa não encontrada' });
     }
-
-    // Puedes mantener la verificación de permisos si lo deseas
-
-    // Verifica si el usuario tiene permisos
-    // if (task.userId !== userId) {
-    //   return res.status(403).json({ error: 'No tienes permisos para compartir esta tarea' });
-    // }
-
     const updatedTask = await prisma.task.update({
       where: {
         id: taskId,
@@ -172,11 +155,11 @@ exports.shareTask = async (req, res) => {
       },
     });
 
-    // Devuelve la respuesta con la tarea actualizada
+    // Devolve a resposta com a tarefa atualizada
     res.status(200).json(updatedTask);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+    res.status(500).json({ error: 'Erro interno do servidor"' });
   }
 };
 
@@ -224,7 +207,7 @@ exports.categorizeTask = async (req, res) => {
   }
 }
 
-// Priorizar una tarea
+// Priorizar uma tarefa
 exports.prioritizeTask = async (req, res) => {
   const { id } = req.params;
   const { priority } = req.body;
@@ -242,7 +225,7 @@ exports.prioritizeTask = async (req, res) => {
     res.json(task);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Error al priorizar la tarea' });
+    res.status(500).json({ error: 'Erro ao priorizar a tarefa' });
   }
 };
 

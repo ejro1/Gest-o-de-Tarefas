@@ -4,7 +4,7 @@ module.exports = async (req, res, next) => {
     const accessToken = req.headers['authorization'];
 
     if (!accessToken) {
-        return res.status(401).send("Unauthorized");
+        return res.status(401).send("Não autorizado");
     }
 
     try {
@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
         req.body.loggedUserName = result.Name;
         return next();
     } catch (err) {
-        console.error('Error de autenticación:', err);
-        return res.status(401).send("Unauthorized");
+        console.error('Erro de autenticação:', err);
+        return res.status(401).send("Não autorizado");
     }
 }
