@@ -3,10 +3,12 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated/client"
   binaryTargets = ["native"]
-
+  config = {
+    engineType = "binary"
+  }
 }
+
 
 datasource db {
   provider = "postgresql"
