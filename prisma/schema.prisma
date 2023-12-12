@@ -2,16 +2,16 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "./generated/client"
-    binaryTargets = ["native", "windows"]
-
+  provider      = "prisma-client-js"
+  output        = "./generated/client"
 }
+
 
 datasource db {
   provider = "postgresql"
-  url      = env("postgres://default:************@ep-wispy-glade-71837903.eu-central-1.postgres.vercel-storage.com:5432/verceldb")
+  url      = "postgres://default:0nxehGBTqiP9@ep-wispy-glade-71837903-pooler.eu-central-1.postgres.vercel-storage.com/verceldb"
 }
+
 model Task {
   id          Int      @id @default(autoincrement())
   title       String
