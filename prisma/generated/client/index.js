@@ -31,11 +31,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.6.0
- * Query Engine version: e95e739751f42d8ca026f6b910f5a2dc5adeaeee
+ * Query Engine version: 79fb5193cf0a8fdbef536e4b4a159cad677ab1b9
  */
 Prisma.prismaVersion = {
   client: "5.6.0",
-  engine: "e95e739751f42d8ca026f6b910f5a2dc5adeaeee"
+  engine: "79fb5193cf0a8fdbef536e4b4a159cad677ab1b9"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -133,7 +133,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/ejro/Trabalho Practico Prisma Prova/prisma/generated/client",
+      "value": "C:\\Users\\Helen\\Documents\\GitHub\\Gest-o-de-Tarefas\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -142,20 +142,23 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "linux-arm64-openssl-1.1.x",
+        "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "windows"
       }
     ],
     "previewFeatures": [],
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
   "clientVersion": "5.6.0",
-  "engineVersion": "e95e739751f42d8ca026f6b910f5a2dc5adeaeee",
+  "engineVersion": "79fb5193cf0a8fdbef536e4b4a159cad677ab1b9",
   "datasourceNames": [
     "db"
   ],
@@ -164,13 +167,13 @@ const config = {
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "fromEnvVar": null,
+        "value": "postgres://default:0nxehGBTqiP9@ep-wispy-glade-71837903-pooler.eu-central-1.postgres.vercel-storage.com/verceldb"
       }
     }
   },
-  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAicHJpc21hLWNsaWVudC1qcyIKICBvdXRwdXQgICA9ICIuL2dlbmVyYXRlZC9jbGllbnQiCn0KCmRhdGFzb3VyY2UgZGIgewogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiCiAgdXJsICAgICAgPSBlbnYoIkRBVEFCQVNFX1VSTCIpCn0KbW9kZWwgVGFzayB7CiAgaWQgICAgICAgICAgSW50ICAgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICB0aXRsZSAgICAgICBTdHJpbmcKICBkZXNjcmlwdGlvbiBTdHJpbmcKICBkdWVEYXRlICAgICBEYXRlVGltZQogIGNvbXBsZXRlZCAgIEJvb2xlYW4gIEBkZWZhdWx0KGZhbHNlKQogIGNhdGVnb3J5ICAgIFN0cmluZyAKICBmYXZvcml0ZSAgICBCb29sZWFuICBAZGVmYXVsdChmYWxzZSkgCiAgc2hhcmVkV2l0aCBJbnRbXSAgICAgIEBkZWZhdWx0KFtdKSAKICBwcmlvcml0eSAgIFN0cmluZwp9Cm1vZGVsIFVzZXJzewogICAgaWQgSW50IEBpZCBAZGVmYXVsdChhdXRvaW5jcmVtZW50KCkpCiAgICBuYW1lIFN0cmluZyAgQGRiLlZhckNoYXIoMjU1KQogICAgZW1haWwgU3RyaW5nIEB1bmlxdWUKICAgIHBhc3N3b3JkIFN0cmluZwogICAgaXNBZG1pbiAgIEJvb2xlYW4gQGRlZmF1bHQoZmFsc2UpCn0=",
-  "inlineSchemaHash": "93b1d55d6755f88d896295f43d8a98b2d526060e57b3974427e90bafc6f48c44",
+  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL2NsaWVudCINCiAgYmluYXJ5VGFyZ2V0cyA9IFsibmF0aXZlIiwgIndpbmRvd3MiXQ0KfQ0KDQoNCg0KZGF0YXNvdXJjZSBkYiB7DQogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiDQogIHVybCAgICAgID0gInBvc3RncmVzOi8vZGVmYXVsdDowbnhlaEdCVHFpUDlAZXAtd2lzcHktZ2xhZGUtNzE4Mzc5MDMtcG9vbGVyLmV1LWNlbnRyYWwtMS5wb3N0Z3Jlcy52ZXJjZWwtc3RvcmFnZS5jb20vdmVyY2VsZGIiDQp9DQoNCm1vZGVsIFRhc2sgew0KICBpZCAgICAgICAgICBJbnQgICAgICBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQ0KICB0aXRsZSAgICAgICBTdHJpbmcNCiAgZGVzY3JpcHRpb24gU3RyaW5nDQogIGR1ZURhdGUgICAgIERhdGVUaW1lDQogIGNvbXBsZXRlZCAgIEJvb2xlYW4gIEBkZWZhdWx0KGZhbHNlKQ0KICBjYXRlZ29yeSAgICBTdHJpbmcgDQogIGZhdm9yaXRlICAgIEJvb2xlYW4gIEBkZWZhdWx0KGZhbHNlKSANCiAgc2hhcmVkV2l0aCBJbnRbXSAgICAgIEBkZWZhdWx0KFtdKSANCiAgcHJpb3JpdHkgICBTdHJpbmcNCn0NCm1vZGVsIFVzZXJzew0KICAgIGlkIEludCBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQ0KICAgIG5hbWUgU3RyaW5nICBAZGIuVmFyQ2hhcigyNTUpDQogICAgZW1haWwgU3RyaW5nIEB1bmlxdWUNCiAgICBwYXNzd29yZCBTdHJpbmcNCiAgICBpc0FkbWluICAgQm9vbGVhbiBAZGVmYXVsdChmYWxzZSkNCn0=",
+  "inlineSchemaHash": "1e8980326e3d85662a68168b262cba68665c4a19e8ef4c88f70883c5aa4d3e26",
   "noEngine": false
 }
 
@@ -208,8 +211,8 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-linux-arm64-openssl-1.1.x.so.node");
-path.join(process.cwd(), "prisma/generated/client/libquery_engine-linux-arm64-openssl-1.1.x.so.node")
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "prisma/generated/client/query_engine-windows.dll.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/generated/client/schema.prisma")
