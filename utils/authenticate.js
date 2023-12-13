@@ -1,8 +1,15 @@
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 
-const secret = process.env.JWT_SECRET;
+let secret = process.env.JWT_SECRET;
+
 if (!secret) {
-    console.error('A variável de ambiente JWT_SECRET não está configurada.');
+    // Se a variável de ambiente não estiver definida, gera uma chave aleatória com 64 bytes
+    secret = crypto.randomBytes(64).toString('hex');
+    console.log('Variável de ambiente JWT_SECRET não configurada. Gerando uma chave aleatória.');
+    console.log('Chave gerada:', secret);
+    // Define a variável de ambiente JWT_SECRET com a chave gerada
+    process.env.JWT_SECRET = secret;
 }
 
 exports.generateAccessToken = information => jwt.sign(information, secret, { expiresIn: '7d' });

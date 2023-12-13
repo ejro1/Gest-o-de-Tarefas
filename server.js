@@ -12,7 +12,7 @@ app.use(cors());
 app.use('/api/', router);
 
 
-const port = 8080;
-app.listen(port, () => {
-    console.log('Express server listening on port', port)
+const PORT = process.env.PORT || 3000; 
+app.listen(PORT, () => {
+  console.log(`Express server listening on port ${PORT}`);
 });
