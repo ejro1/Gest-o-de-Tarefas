@@ -23,11 +23,14 @@ exports.signin = async (req, res) => {
             if (passwordIsValid) {
                 const accessToken = authenticateUtil.generateAccessToken({ id: user.id, name: user.name, isAdmin : user.isAdmin });
                 res.status(200).json({ name: user.name, token: accessToken });
+            } else {
+                res.status(401).json({ msg: 'Credenciais inválidas.' });
             }
+        } else {
+            res.status(404).json({ msg: 'Usuário não encontrado.' });
         }
-
     } catch (error) {
-        res.status(401).json({ msg: error.message })
+        res.status(500).json({ msg: 'Erro interno no servidor.', error: error.message });
     }
 }
 
@@ -59,7 +62,6 @@ exports.signup = async (req, res) => {
             });
             res.status(200).json({ name: user.name, token: accessToken });
         } else {
-    
             res.status(401).json({ msg: 'Erro na autenticação do usuário recém-criado.' });
         }
     } catch (error) {
@@ -70,14 +72,13 @@ exports.signup = async (req, res) => {
 // Obter todos os usuarios
 exports.getAllUsers = async (req, res) => {
     try {
-    
         const users = await prisma.users.findMany();
-
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ msg: 'Erro ao obter usuarios', error: error.message });
     }
 }
+
 // Actualizar perfil do usuario 
 exports.updateProfile = async (req, res) => {
     const { id } = req.params; 
@@ -104,6 +105,7 @@ exports.updateProfile = async (req, res) => {
         return res.status(500).json({ error: 'Erro ao actualizar o perfil' });
     }
 };
+
 // Apagar um usuario 
 exports.deleteUser = async (req, res) => {
     const id = req.params.id;

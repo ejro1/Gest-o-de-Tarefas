@@ -1,28 +1,26 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
+    const jwt = require('jsonwebtoken');
+    const crypto = require('crypto');
 
-let secret = process.env.JWT_SECRET;
+    let secret = process.env.JWT_SECRET;
 
-if (!secret) {
-    // Se a variável de ambiente não estiver definida, gera uma chave aleatória com 64 bytes
-    secret = crypto.randomBytes(64).toString('hex');
-    console.log('Variável de ambiente JWT_SECRET não configurada. Gerando uma chave aleatória.');
-    console.log('Chave gerada:', secret);
-    // Define a variável de ambiente JWT_SECRET com a chave gerada
-    process.env.JWT_SECRET = secret;
-}
+    if (!secret) {
+        secret = crypto.randomBytes(64).toString('hex');
+        console.log('Variável de ambiente JWT_SECRET não configurada. Gerando uma chave aleatória.');
+        console.log('Chave gerada:', secret);
+        process.env.JWT_SECRET = secret;
+    }
 
-exports.generateAccessToken = information => jwt.sign(information, secret, { expiresIn: '7d' });
+    exports.generateAccessToken = information => jwt.sign(information, secret, { expiresIn: '7d' });
 
-exports.certifyAccessToken = token => {
-    return new Promise((resolve, reject) => {
-        jwt.verify(token, secret, (err, decoded) => {
-            if (err) {
-                console.error('Erro na verificação do token:', err.name, err.message);
-                reject(err);
-            } else {
-                resolve(decoded);
-            }
+    exports.certifyAccessToken = token => {
+        return new Promise((resolve, reject) => {
+            jwt.verify(token, secret, (err, decoded) => {
+                if (err) {
+                    console.error('Erro na verificação do token:', err.name, err.message);
+                    reject(err);
+                } else {
+                    resolve(decoded);
+                }
+            });
         });
-    });
-}
+    }
