@@ -17,17 +17,17 @@ if (!jwtSecret) {
     console.log('Chave gerada:', jwtSecret);
     process.env.JWT_SECRET = jwtSecret;
 }
-// Rota raiz
+
+
+const routes = require('./routes/index'); 
+
+app.use('/', routes); 
+
 app.get('/', (req, res) => {
-    res.send('Esta é a página inicial');
-  });
-  
-  // Rota para /api/users
-  app.get('/api/users', (req, res) => {
-    res.send('Rota de usuários da API');
-  });
+  res.send('O servidor está funcionando corretamente!');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
