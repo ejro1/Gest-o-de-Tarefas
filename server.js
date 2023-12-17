@@ -17,10 +17,15 @@ if (!jwtSecret) {
     console.log('Chave gerada:', jwtSecret);
     process.env.JWT_SECRET = jwtSecret;
 }
-
-// Rotas
-const routes = require('./routes/index');
-app.use('/api', routes);
+// Rota raiz
+app.get('/', (req, res) => {
+    res.send('Esta é a página inicial');
+  });
+  
+  // Rota para /api/users
+  app.get('/api/users', (req, res) => {
+    res.send('Rota de usuários da API');
+  });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
