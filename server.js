@@ -11,13 +11,6 @@ app.use(cors());
 const crypto = require('crypto');
 let jwtSecret = process.env.JWT_SECRET;
 
-if (!jwtSecret) {
-    jwtSecret = crypto.randomBytes(64).toString('hex');
-    console.log('Variável de ambiente JWT_SECRET não configurada. Gerando uma chave aleatória.');
-    console.log('Chave gerada:', jwtSecret);
-    process.env.JWT_SECRET = jwtSecret;
-}
-
 // Rotas
 const routes = require('./routes/index');
 app.use('/api', routes);

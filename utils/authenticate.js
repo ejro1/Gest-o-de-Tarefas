@@ -1,15 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
+    const jwt = require('jsonwebtoken');
+    const crypto = require('crypto');
 
-const app = express();
+    let secret = process.env.JWT_SECRET;
 
-app.use(bodyParser.json());
-app.use(cors());
-
-const secret = process.env.JWT_SECRET;
-    
 
     exports.generateAccessToken = information => jwt.sign(information, secret, { expiresIn: '7d' });
 
