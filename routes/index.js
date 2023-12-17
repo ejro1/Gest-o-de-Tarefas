@@ -10,7 +10,7 @@ const taskRoutes = require('./taskRoutes');
 const authenticationMiddleware = require('../middlewares/auth');
 
 
-router.use('/users', authenticationMiddleware, userRoutes);
+router.use('/users', userRoutes);
 router.use('/tasks', authenticationMiddleware, taskRoutes);
 
 
