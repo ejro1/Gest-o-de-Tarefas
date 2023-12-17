@@ -18,16 +18,11 @@ if (!jwtSecret) {
     process.env.JWT_SECRET = jwtSecret;
 }
 
-
-const routes = require('./routes/index'); 
-
-app.use('/', routes); 
-
-app.get('/', (req, res) => {
-  res.send('O servidor está funcionando corretamente!');
-});
+// Rotas
+const routes = require('./routes/index');
+app.use('/api', routes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
