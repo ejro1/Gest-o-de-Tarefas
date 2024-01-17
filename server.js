@@ -1,18 +1,22 @@
-require('dotenv').config();
+const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const express = require('express');
-
-const router = require('./routes/index');
-
+require('dotenv').config();
 const app = express();
+
+
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/api/', router);
+// Configuração da chave JWT_SECRET
+const crypto = require('crypto');
+let jwtSecret = process.env.JWT_SECRET;
 
+// Rotas
+const routes = require('./routes/index');
+app.use('/api', routes);
 
-const port = process.env.SERVER_PORT || 8080;
-app.listen(port, () => {
-    console.log('Express server listening on port', port)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });

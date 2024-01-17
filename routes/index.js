@@ -6,6 +6,10 @@ const userRoutes = require('./userRoutes');
 const taskRoutes = require('./taskRoutes');
 
 
+router.get('/', (req, res) => {
+    res.send('O servidor está funcionando corretamente!');
+});
+
 
 const authenticationMiddleware = require('../middlewares/auth');
 
