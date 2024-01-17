@@ -1,0 +1,8 @@
+{
+  "short_name": "React App",
+  "name": "Gestao de tarefas",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
