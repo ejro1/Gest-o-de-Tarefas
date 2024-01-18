@@ -21,7 +21,7 @@
   }
   
   #add-task-section {
-    background-color: #3498db;
+    background-color: #DA4A68;
     color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -34,3 +34,19 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   }
   
+
+
+.custom-header {
+  background-color: #a84a76 !important; /* Cor de fundo primary */
+}
+.custom-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .custom-logo-container {
+    justify-content: center;
+  }
+}
