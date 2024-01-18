@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const TaskForm = ({ onAddTask }) => {
-  const [newTask, setNewTask] = useState({ title: '', description: '' });
+const TaskForm = ({ onAddTask, onUpdateTask, selectedTask }) => {
+  const [task, setTask] = useState({
+    title: '',
+    description: '',
+    category: '', 
+  });
+
+  useEffect(() => {
+    if (selectedTask) {
+      setTask({ ...selectedTask });
+    }
+  }, [selectedTask]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewTask((prevTask) => ({ ...prevTask, [name]: value }));
+    setTask((prevTask) => ({ ...prevTask, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddTask(newTask);
-    // Limpar o formulário após o envio
-    setNewTask({ title: '', description: '' });
+
+    if (task.title.trim() === '' || task.description.trim() === '' || task.category.trim() === '') {
+      alert('Por favor, preencha título, descrição e categoria.');
+      return;
+    }
+
+    if (selectedTask) {
+      onUpdateTask(task);
+    } else {
+      onAddTask(task);
+    }
+    setTask({ title: '', description: '', category: '' });
   };
 
   return (
@@ -24,7 +43,7 @@ const TaskForm = ({ onAddTask }) => {
           type="text"
           placeholder="Digite o título da tarefa"
           name="title"
-          value={newTask.title}
+          value={task.title}
           onChange={handleInputChange}
         />
       </Form.Group>
@@ -35,12 +54,22 @@ const TaskForm = ({ onAddTask }) => {
           rows={3}
           placeholder="Digite a descrição da tarefa"
           name="description"
-          value={newTask.description}
+          value={task.description}
+          onChange={handleInputChange}
+        />
+      </Form.Group>
+      <Form.Group controlId="formCategory">
+        <Form.Label>Categoria</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Digite a categoria da tarefa"
+          name="category"
+          value={task.category}
           onChange={handleInputChange}
         />
       </Form.Group>
       <Button variant="success" type="submit">
-        Adicionar Tarefa
+        {selectedTask ? 'Atualizar Tarefa' : 'Adicionar Tarefa'}
       </Button>
     </Form>
   );

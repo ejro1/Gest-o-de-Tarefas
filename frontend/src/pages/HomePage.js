@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
+import Footer from '../components/Footer';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const HomePage = () => {
@@ -25,6 +26,7 @@ const HomePage = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };
