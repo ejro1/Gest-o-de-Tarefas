@@ -1,4 +1,7 @@
 const authenticateUtil = require('../utils/authenticate.js');
+userRouter.post('/signin', controller.signin);
+
+userRouter.post('/signup', controller.signup);
 
 module.exports = async (req, res, next) => {
     const accessToken = req.headers['authorization'];
@@ -18,4 +21,6 @@ module.exports = async (req, res, next) => {
         console.error('Erro de autenticação:', err);
         return res.status(401).send("Não autorizado");
     }
+
 }
+
