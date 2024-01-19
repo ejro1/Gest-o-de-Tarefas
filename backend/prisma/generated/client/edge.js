@@ -31,11 +31,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.6.0
- * Query Engine version: 79fb5193cf0a8fdbef536e4b4a159cad677ab1b9
+ * Query Engine version: e95e739751f42d8ca026f6b910f5a2dc5adeaeee
  */
 Prisma.prismaVersion = {
   client: "5.6.0",
-  engine: "79fb5193cf0a8fdbef536e4b4a159cad677ab1b9"
+  engine: "e95e739751f42d8ca026f6b910f5a2dc5adeaeee"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -132,7 +132,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Helen\\Documents\\GitHub\\Gest-o-de-Tarefas\\prisma\\generated\\client",
+      "value": "C:\\Users\\Helen\\Gestor_de_tarefas-1\\backend\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -157,12 +157,12 @@ const config = {
   },
   "relativePath": "../..",
   "clientVersion": "5.6.0",
-  "engineVersion": "79fb5193cf0a8fdbef536e4b4a159cad677ab1b9",
+  "engineVersion": "e95e739751f42d8ca026f6b910f5a2dc5adeaeee",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
