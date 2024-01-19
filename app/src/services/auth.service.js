@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://gestordetarefas.vercel.app/api/v2/auth/"; 
+const API_URL = "https://gestordetarefas.vercel.app/api"; 
 
 const register = (name, email, password) => {
 return axios.post(API_URL + "signup", {
