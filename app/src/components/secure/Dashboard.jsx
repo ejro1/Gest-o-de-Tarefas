@@ -6,7 +6,6 @@ const Dashboard = () => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        // Buscar tarefas da sua API de backend e atualizar o estado
         fetchTasks();
     }, []);
 
@@ -31,7 +30,6 @@ const Dashboard = () => {
 
     const logOut = () => {
         AuthService.logout();
-        // Lidar com redirecionamento ou qualquer outra lógica após o logout
     };
 
     return (
