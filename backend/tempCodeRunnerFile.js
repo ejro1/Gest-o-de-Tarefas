@@ -7,10 +7,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/favicon.ico', (req, res) => {
-    res.status(204).end();
-  });
-
 // Configuração da chave JWT_SECRET
 const crypto = require('crypto');
 let jwtSecret = process.env.JWT_SECRET;
