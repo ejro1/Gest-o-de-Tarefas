@@ -5,14 +5,9 @@ require('dotenv').config();
 const app = express();
 
 app.use(bodyParser.json());
+
+// Configurar o CORS globalmente
 app.use(cors());
-
-// Configuração da chave JWT_SECRET
-const crypto = require('crypto');
-let jwtSecret = process.env.JWT_SECRET;
-
-// Middleware para configurar o CORS explicitamente para a rota específica
-app.options('/api/v2/auth/signup', cors()); // Adiciona essa linha
 
 // Rotas
 const routes = require('./routes/index');
