@@ -964,7 +964,7 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
-    dueDate: Date | null
+    dueDate: string | null
     completed: boolean | null
     category: string | null
     favorite: boolean | null
@@ -975,7 +975,7 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
-    dueDate: Date | null
+    dueDate: string | null
     completed: boolean | null
     category: string | null
     favorite: boolean | null
@@ -1131,7 +1131,7 @@ export namespace Prisma {
     id: number
     title: string
     description: string
-    dueDate: Date
+    dueDate: string
     completed: boolean
     category: string
     favorite: boolean
@@ -1190,7 +1190,7 @@ export namespace Prisma {
       id: number
       title: string
       description: string
-      dueDate: Date
+      dueDate: string
       completed: boolean
       category: string
       favorite: boolean
@@ -1593,7 +1593,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Task", 'Int'>
     readonly title: FieldRef<"Task", 'String'>
     readonly description: FieldRef<"Task", 'String'>
-    readonly dueDate: FieldRef<"Task", 'DateTime'>
+    readonly dueDate: FieldRef<"Task", 'String'>
     readonly completed: FieldRef<"Task", 'Boolean'>
     readonly category: FieldRef<"Task", 'String'>
     readonly favorite: FieldRef<"Task", 'Boolean'>
@@ -2880,20 +2880,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -2924,7 +2910,7 @@ export namespace Prisma {
     id?: IntFilter<"Task"> | number
     title?: StringFilter<"Task"> | string
     description?: StringFilter<"Task"> | string
-    dueDate?: DateTimeFilter<"Task"> | Date | string
+    dueDate?: StringFilter<"Task"> | string
     completed?: BoolFilter<"Task"> | boolean
     category?: StringFilter<"Task"> | string
     favorite?: BoolFilter<"Task"> | boolean
@@ -2951,7 +2937,7 @@ export namespace Prisma {
     NOT?: TaskWhereInput | TaskWhereInput[]
     title?: StringFilter<"Task"> | string
     description?: StringFilter<"Task"> | string
-    dueDate?: DateTimeFilter<"Task"> | Date | string
+    dueDate?: StringFilter<"Task"> | string
     completed?: BoolFilter<"Task"> | boolean
     category?: StringFilter<"Task"> | string
     favorite?: BoolFilter<"Task"> | boolean
@@ -2983,7 +2969,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Task"> | number
     title?: StringWithAggregatesFilter<"Task"> | string
     description?: StringWithAggregatesFilter<"Task"> | string
-    dueDate?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    dueDate?: StringWithAggregatesFilter<"Task"> | string
     completed?: BoolWithAggregatesFilter<"Task"> | boolean
     category?: StringWithAggregatesFilter<"Task"> | string
     favorite?: BoolWithAggregatesFilter<"Task"> | boolean
@@ -3048,7 +3034,7 @@ export namespace Prisma {
   export type TaskCreateInput = {
     title: string
     description: string
-    dueDate: Date | string
+    dueDate: string
     completed?: boolean
     category: string
     favorite?: boolean
@@ -3060,7 +3046,7 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    dueDate: Date | string
+    dueDate: string
     completed?: boolean
     category: string
     favorite?: boolean
@@ -3071,7 +3057,7 @@ export namespace Prisma {
   export type TaskUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    dueDate?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
     category?: StringFieldUpdateOperationsInput | string
     favorite?: BoolFieldUpdateOperationsInput | boolean
@@ -3083,7 +3069,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    dueDate?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
     category?: StringFieldUpdateOperationsInput | string
     favorite?: BoolFieldUpdateOperationsInput | boolean
@@ -3095,7 +3081,7 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    dueDate: Date | string
+    dueDate: string
     completed?: boolean
     category: string
     favorite?: boolean
@@ -3106,7 +3092,7 @@ export namespace Prisma {
   export type TaskUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    dueDate?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
     category?: StringFieldUpdateOperationsInput | string
     favorite?: BoolFieldUpdateOperationsInput | boolean
@@ -3118,7 +3104,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    dueDate?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
     category?: StringFieldUpdateOperationsInput | string
     favorite?: BoolFieldUpdateOperationsInput | boolean
@@ -3203,17 +3189,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -3307,20 +3282,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -3369,10 +3330,6 @@ export namespace Prisma {
     set?: string
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -3413,17 +3370,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -3473,20 +3419,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {

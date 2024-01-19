@@ -11,7 +11,7 @@ const authenticationMiddleware = require('../middlewares/auth');
 
 
 router.use('/users', userRoutes);
-router.use('/tasks', authenticationMiddleware, taskRoutes);
+router.use('/tasks', taskRoutes);
 
 
 module.exports = router;

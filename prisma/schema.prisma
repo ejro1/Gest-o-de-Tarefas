@@ -14,7 +14,7 @@ model Task {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  dueDate     DateTime
+  dueDate     String
   completed   Boolean  @default(false)
   category    String 
   favorite    Boolean  @default(false) 
