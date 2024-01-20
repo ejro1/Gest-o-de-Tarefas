@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/api/', router);
+app.use('/api', router); 
 
 
 const port = process.env.SERVER_PORT || 8080;

@@ -21,6 +21,7 @@ const {
   warnOnce,
   defineDmmfProperty,
   Public,
+  detectRuntime,
 } = require('./runtime/library')
 
 
@@ -30,12 +31,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.6.0
- * Query Engine version: e95e739751f42d8ca026f6b910f5a2dc5adeaeee
+ * Prisma Client JS version: 5.8.1
+ * Query Engine version: 78caf6feeaed953168c64e15a249c3e9a033ebe2
  */
 Prisma.prismaVersion = {
-  client: "5.6.0",
-  engine: "e95e739751f42d8ca026f6b910f5a2dc5adeaeee"
+  client: "5.8.1",
+  engine: "78caf6feeaed953168c64e15a249c3e9a033ebe2"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -133,7 +134,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/ejro/Trabalho Practico Prisma /prisma/generated/client",
+      "value": "C:\\Users\\Helen\\Gest-o-de-Tarefas\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -142,7 +143,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "linux-arm64-openssl-1.1.x",
+        "value": "windows",
         "native": true
       }
     ],
@@ -154,8 +155,8 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "5.6.0",
-  "engineVersion": "e95e739751f42d8ca026f6b910f5a2dc5adeaeee",
+  "clientVersion": "5.8.1",
+  "engineVersion": "78caf6feeaed953168c64e15a249c3e9a033ebe2",
   "datasourceNames": [
     "db"
   ],
@@ -168,8 +169,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAicHJpc21hLWNsaWVudC1qcyIKICBvdXRwdXQgICA9ICIuL2dlbmVyYXRlZC9jbGllbnQiCn0KCmRhdGFzb3VyY2UgZGIgewogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiCiAgdXJsICAgICAgPSBlbnYoIkRBVEFCQVNFX1VSTCIpCn0KbW9kZWwgVGFzayB7CiAgaWQgICAgICAgICAgSW50ICAgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICB0aXRsZSAgICAgICBTdHJpbmcKICBkZXNjcmlwdGlvbiBTdHJpbmcKICBkdWVEYXRlICAgICBTdHJpbmcKICBjb21wbGV0ZWQgICBCb29sZWFuICBAZGVmYXVsdChmYWxzZSkKICBjYXRlZ29yeSAgICBTdHJpbmcgCiAgZmF2b3JpdGUgICAgQm9vbGVhbiAgQGRlZmF1bHQoZmFsc2UpIAogIHNoYXJlZFdpdGggSW50W10gICAgICBAZGVmYXVsdChbXSkgCiAgcHJpb3JpdHkgICBTdHJpbmcKfQptb2RlbCBVc2Vyc3sKICAgIGlkIEludCBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQogICAgbmFtZSBTdHJpbmcgIEBkYi5WYXJDaGFyKDI1NSkKICAgIGVtYWlsIFN0cmluZyBAdW5pcXVlCiAgICBwYXNzd29yZCBTdHJpbmcKICAgIGlzQWRtaW4gICBCb29sZWFuIEBkZWZhdWx0KGZhbHNlKQp9",
-  "inlineSchemaHash": "a9573f72cb0d8ceb00c56bc8f87f08f1e62c4a8bcb1ccb13e1bcc67bd2d1bbc7"
+  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL2NsaWVudCINCn0NCg0KZGF0YXNvdXJjZSBkYiB7DQogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiDQogIHVybCAgICAgID0gZW52KCJEQVRBQkFTRV9VUkwiKQ0KfQ0KbW9kZWwgVGFzayB7DQogIGlkICAgICAgICAgIEludCAgICAgIEBpZCBAZGVmYXVsdChhdXRvaW5jcmVtZW50KCkpDQogIHRpdGxlICAgICAgIFN0cmluZw0KICBkZXNjcmlwdGlvbiBTdHJpbmcNCiAgZHVlRGF0ZSAgICAgU3RyaW5nDQogIGNvbXBsZXRlZCAgIEJvb2xlYW4gIEBkZWZhdWx0KGZhbHNlKQ0KICBjYXRlZ29yeSAgICBTdHJpbmcgDQogIGZhdm9yaXRlICAgIEJvb2xlYW4gIEBkZWZhdWx0KGZhbHNlKSANCiAgc2hhcmVkV2l0aCBJbnRbXSAgICAgIEBkZWZhdWx0KFtdKSANCiAgcHJpb3JpdHkgICBTdHJpbmcNCn0NCm1vZGVsIFVzZXJzew0KICAgIGlkIEludCBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQ0KICAgIG5hbWUgU3RyaW5nICBAZGIuVmFyQ2hhcigyNTUpDQogICAgZW1haWwgU3RyaW5nIEB1bmlxdWUNCiAgICBwYXNzd29yZCBTdHJpbmcNCiAgICBpc0FkbWluICAgQm9vbGVhbiBAZGVmYXVsdChmYWxzZSkNCn0=",
+  "inlineSchemaHash": "d6fe068553525faf5eeb84f0568922d4dcf149012df34bc6c4dd34340083ec0d"
 }
 
 const fs = require('fs')
@@ -206,8 +207,8 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-linux-arm64-openssl-1.1.x.so.node");
-path.join(process.cwd(), "prisma/generated/client/libquery_engine-linux-arm64-openssl-1.1.x.so.node")
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "prisma/generated/client/query_engine-windows.dll.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/generated/client/schema.prisma")
